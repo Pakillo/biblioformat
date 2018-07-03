@@ -11,8 +11,8 @@ Installation
 devtools::install_github("Pakillo/biblioformat")
 ```
 
-Usage
------
+Motivation
+----------
 
 The motivation for this package is the need to revise and/or reformat reference lists (bibliographies) only available as plain text (e.g. at the end of a manuscript or document). This happens e.g. [when our manuscript is rejected from a journal and we need to reformat the bibliography](https://twitter.com/ManuSaunders/status/920441120638697472) and we don't have the original bibliographic database (as BibTeX, Mendeley, Zotero...) but only a plain text of references.
 
@@ -42,9 +42,15 @@ then
 library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
+#> Warning: Failure in resolving '10.1038/ncomms14845'. See error detail in
+#> results.
 newrefs
-#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."             
-#> [2] "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
+#>                                                                                                                                                                                                                                    doi 
+#>                                                                                                                                                                                                                  "10.1038/ncomms14845" 
+#>                                                                                                                                                                                                                                  error 
+#> "Error in curl::curl_fetch_memory(x$url$url, handle = x$url$handle) : \n  schannel: next InitializeSecurityContext failed: SEC_E_MESSAGE_ALTERED (0x8009030F) - The message or signature supplied for verification has been altered\n" 
+#>                                                                                                                                                                                                                                        
+#>                                                      "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
 ```
 
 Note that missing titles and journals have now been corrected. We can use &gt;9000 different citation styles.

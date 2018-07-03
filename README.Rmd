@@ -21,7 +21,7 @@ This package aims to help with revising and reformatting reference lists (biblio
 devtools::install_github("Pakillo/biblioformat")
 ```
 
-## Usage
+## Motivation
 
 The motivation for this package is the need to revise and/or reformat reference lists (bibliographies) only available as plain text (e.g. at the end of a manuscript or document). This happens e.g. [when our manuscript is rejected from a journal and we need to reformat the bibliography](https://twitter.com/ManuSaunders/status/920441120638697472) and we don't have the original bibliographic database (as BibTeX, Mendeley, Zotero...) but only a plain text of references. 
 
