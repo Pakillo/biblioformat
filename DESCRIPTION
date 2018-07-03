@@ -1,6 +1,6 @@
 Package: biblioformat
 Version: 0.0.0.9000
-Title: Revise and Reformat a Bibliography
+Title: Revise and Reformat Plain Text Bibliographies
 Description: This package aims to revise and reformat reference lists (bibliographies) in plain text format. 
     It takes a reference list as plain text, tries to retrieve DOIs and metadata from Crossref, and reformat them according
     to a chosen style (e.g. BibTeX, or following a particular journal citation style).
