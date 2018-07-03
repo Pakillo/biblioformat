@@ -51,11 +51,13 @@ Note that missing titles and journals have now been corrected. We can use &gt;90
 
 The revised references are automatically copied to the clipboard, so they can be directly pasted into the original document.
 
-Alternatively, we can obtain the revised references in BibTeX format, for further editing or importing into a reference manager
+Alternatively, we can obtain the references in BibTeX format, for further editing or importing into a reference manager
 
 ``` r
 newrefs <- biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
 ```
+
+Note that some references may be changed and erroneously confounded with others. Please check the output reference list.
 
 Acknowledgements
 ----------------
