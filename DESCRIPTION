@@ -10,3 +10,5 @@ ByteCompile: true
 Imports: 
     rcrossref,
     datapasta
+URL: https://github.com/Pakillo/biblioformat
+BugReports: https://github.com/Pakillo/biblioformat/issues
