@@ -42,15 +42,9 @@ then
 library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
-#> Warning: Failure in resolving '10.1038/ncomms14845'. See error detail in
-#> results.
 newrefs
-#>                                                                                                                                                                                                                                    doi 
-#>                                                                                                                                                                                                                  "10.1038/ncomms14845" 
-#>                                                                                                                                                                                                                                  error 
-#> "Error in curl::curl_fetch_memory(x$url$url, handle = x$url$handle) : \n  schannel: next InitializeSecurityContext failed: SEC_E_MESSAGE_ALTERED (0x8009030F) - The message or signature supplied for verification has been altered\n" 
-#>                                                                                                                                                                                                                                        
-#>                                                      "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
+#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."             
+#> [2] "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
 ```
 
 Note that missing titles and journals have now been corrected. We can use &gt;9000 different citation styles.
@@ -73,4 +67,4 @@ This package is just a wrapper of the excellent `rcrossref` package by rOpenSci 
 Related
 -------
 
-See also <https://anystyle.io/> for an excellent free online parser of bibliographic references.
+See also <https://anystyle.io/> for an excellent free online parser of bibliographic references. Also <http://cermine.ceon.pl/cermine/index.html>, and others...

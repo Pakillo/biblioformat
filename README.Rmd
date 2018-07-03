@@ -76,7 +76,7 @@ This package is just a wrapper of the excellent `rcrossref` package by rOpenSci 
 
 ## Related
 
-See also https://anystyle.io/ for an excellent free online parser of bibliographic references.
+See also https://anystyle.io/ for an excellent free online parser of bibliographic references. Also http://cermine.ceon.pl/cermine/index.html, and others...
 
 
 
