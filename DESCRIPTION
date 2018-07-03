@@ -1,0 +1,12 @@
+Package: biblioformat
+Version: 0.0.0.9000
+Title: Revise and Reformat Bibliography
+Description: What the package does (one paragraph).
+Authors@R: person('Francisco', 'Rodriguez-Sanchez', email='f.rodriguez.sanc@gmail.com', role = c('aut', 'cre'))
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+ByteCompile: true
+Imports: 
+    rcrossref,
+    datapasta
