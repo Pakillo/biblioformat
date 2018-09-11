@@ -1,6 +1,6 @@
 
-biblioformat: Revise and Reformat Plain Text Bibliographies
-===========================================================
+biblioformat: Revise and Reformat Plain Text Bibliographies with R
+==================================================================
 
 This package aims to help with revising and reformatting reference lists (bibliographies) in plain text format. It takes a reference list as plain text, tries to retrieve DOIs and metadata from Crossref, and reformat them according to a chosen style (e.g. BibTeX, or following a particular journal citation style).
 
@@ -42,6 +42,10 @@ then
 library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
+#> Warning: 10.1038/ncomms14845 agency not found - proceeding with
+#> 'crossref' ...
+#> Warning: 10.1126/science.1206432 agency not found - proceeding with
+#> 'crossref' ...
 newrefs
 #> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."             
 #> [2] "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
@@ -62,7 +66,7 @@ Note that some references may be changed and erroneously confounded with others.
 Acknowledgements
 ----------------
 
-This package is just a wrapper of the excellent `rcrossref` package by rOpenSci - big thanks to them!
+This package is just a wrapper of the excellent [`rcrossref`](https://github.com/ropensci/rcrossref) package by rOpenSci - big thanks to them!
 
 Related
 -------
