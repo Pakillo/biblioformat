@@ -11,7 +11,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# biblioformat: Revise and Reformat Plain Text Bibliographies
+# biblioformat: Revise and Reformat Plain Text Bibliographies with R
 
 This package aims to help with revising and reformatting reference lists (bibliographies) in plain text format. It takes a reference list as plain text, tries to retrieve DOIs and metadata from Crossref, and reformat them according to a chosen style (e.g. BibTeX, or following a particular journal citation style).
 
@@ -71,7 +71,7 @@ Note that some references may be changed and erroneously confounded with others.
 
 ## Acknowledgements
 
-This package is just a wrapper of the excellent `rcrossref` package by rOpenSci - big thanks to them! 
+This package is just a wrapper of the excellent [`rcrossref`](https://github.com/ropensci/rcrossref) package by rOpenSci - big thanks to them! 
 
 
 ## Related

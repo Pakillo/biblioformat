@@ -1,5 +1,5 @@
 Package: biblioformat
-Version: 0.0.0.9000
+Version: 0.0.1
 Title: Revise and Reformat Plain Text Bibliographies
 Description: This package aims to revise and reformat reference lists (bibliographies) in plain text format. 
     It takes a reference list as plain text, tries to retrieve DOIs and metadata from Crossref, and reformat them according
@@ -14,4 +14,4 @@ Imports:
     rcrossref
 URL: https://github.com/Pakillo/biblioformat
 BugReports: https://github.com/Pakillo/biblioformat/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0

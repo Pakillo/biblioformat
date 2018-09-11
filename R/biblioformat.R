@@ -41,7 +41,7 @@ biblioformat <- function(refs = NULL, format = "text", style = "apa", filename =
 
   # Retrieve DOIs from Crossref
   refs.dois <- unlist(lapply(refs.in, function(x) {
-    rcrossref::cr_works(query = x, limit = 1, sort = "score", select = "DOI")$data$DOI
+    rcrossref::cr_works(query = x, limit = 1, sort = "score", select = "DOI")$data$doi
   }))
 
   stopifnot(is.character(refs.dois))
