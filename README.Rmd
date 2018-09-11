@@ -32,11 +32,11 @@ This package takes the text with references, tries to identify their DOIs and me
 
 For example, if we have these references that we want to check (and optionally reformat):
 
-Foster, G. et al. (2017) Future climate forcing potentially without precedent in the last 420 million years. 
+*Foster, G. et al. (2017) Future climate forcing potentially without precedent in the last 420 million years.*
 
-Chen, I.-C. et al. (2011) Science 333, 1024-1026 
+*Chen, I.-C. et al. (2011) Science 333, 1024-1026* 
 
-we can copy them to the clipboard or provide them as a character vector:
+We can copy them to the clipboard or provide them as a character vector:
 
 ```{r}
 refs <- c(

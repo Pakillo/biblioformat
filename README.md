@@ -23,11 +23,11 @@ Example
 
 For example, if we have these references that we want to check (and optionally reformat):
 
-Foster, G. et al. (2017) Future climate forcing potentially without precedent in the last 420 million years.
+*Foster, G. et al. (2017) Future climate forcing potentially without precedent in the last 420 million years.*
 
-Chen, I.-C. et al. (2011) Science 333, 1024-1026
+*Chen, I.-C. et al. (2011) Science 333, 1024-1026*
 
-we can copy them to the clipboard or provide them as a character vector:
+We can copy them to the clipboard or provide them as a character vector:
 
 ``` r
 refs <- c(
@@ -42,12 +42,10 @@ then
 library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
-#> Warning: 10.1038/ncomms14845 agency not found - proceeding with
-#> 'crossref' ...
-#> Warning: 10.1126/science.1206432 agency not found - proceeding with
-#> 'crossref' ...
 newrefs
-#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."             
+
+#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."      
+
 #> [2] "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
 ```
 
