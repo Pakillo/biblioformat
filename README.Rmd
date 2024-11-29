@@ -18,12 +18,12 @@ This package aims to help with revising and reformatting reference lists (biblio
 ## Installation
 
 ``` r
-devtools::install_github("Pakillo/biblioformat")
+install.packages("biblioformat", repos = c("https://pakillo.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
 ## Motivation
 
-The motivation for this package is the need to revise and/or reformat reference lists (bibliographies) only available as plain text (e.g. at the end of a manuscript or document). This happens e.g. [when our manuscript is rejected from a journal and we need to reformat the bibliography](https://twitter.com/ManuSaunders/status/920441120638697472) and we don't have the original bibliographic database (as BibTeX, Mendeley, Zotero...) but only a plain text of references. 
+The motivation for this package is the need to revise and/or reformat reference lists (bibliographies) only available as plain text (e.g. at the end of a manuscript or document). This happens e.g. when our manuscript is rejected from a journal and we need to reformat the bibliography and we don't have the original bibliographic database (as BibTeX, Mendeley, Zotero...) but only a plain text of references. 
 
 This package takes the text with references, tries to identify their DOIs and metadata at Crossref, and outputs the revised citations in the chosen format (BibTeX, a particular journal style...).
 
@@ -76,7 +76,7 @@ This package is just a wrapper of the excellent [`rcrossref`](https://github.com
 
 ## Related
 
-See also https://anystyle.io/ for an excellent free online parser of bibliographic references. Also http://cermine.ceon.pl/cermine/index.html, and others...
+See also https://anystyle.io/ for an excellent free online parser of bibliographic references (or [Ranystyle R package](https://agoutsmedt.github.io/Ranystyle/) to run from R). Also http://cermine.ceon.pl/cermine/index.html, and others...
 
 
 

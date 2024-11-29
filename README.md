@@ -1,31 +1,40 @@
 
-biblioformat: Revise and Reformat Plain Text Bibliographies with R
-==================================================================
+# biblioformat: Revise and Reformat Plain Text Bibliographies with R
 
-This package aims to help with revising and reformatting reference lists (bibliographies) in plain text format. It takes a reference list as plain text, tries to retrieve DOIs and metadata from Crossref, and reformat them according to a chosen style (e.g. BibTeX, or following a particular journal citation style).
+This package aims to help with revising and reformatting reference lists
+(bibliographies) in plain text format. It takes a reference list as
+plain text, tries to retrieve DOIs and metadata from Crossref, and
+reformat them according to a chosen style (e.g. BibTeX, or following a
+particular journal citation style).
 
-Installation
-------------
+## Installation
 
 ``` r
-devtools::install_github("Pakillo/biblioformat")
+install.packages("biblioformat", repos = c("https://pakillo.r-universe.dev", "https://cloud.r-project.org"))
 ```
 
-Motivation
-----------
+## Motivation
 
-The motivation for this package is the need to revise and/or reformat reference lists (bibliographies) only available as plain text (e.g. at the end of a manuscript or document). This happens e.g. [when our manuscript is rejected from a journal and we need to reformat the bibliography](https://twitter.com/ManuSaunders/status/920441120638697472) and we don't have the original bibliographic database (as BibTeX, Mendeley, Zotero...) but only a plain text of references.
+The motivation for this package is the need to revise and/or reformat
+reference lists (bibliographies) only available as plain text (e.g. at
+the end of a manuscript or document). This happens e.g. when our
+manuscript is rejected from a journal and we need to reformat the
+bibliography and we don’t have the original bibliographic database (as
+BibTeX, Mendeley, Zotero…) but only a plain text of references.
 
-This package takes the text with references, tries to identify their DOIs and metadata at Crossref, and outputs the revised citations in the chosen format (BibTeX, a particular journal style...).
+This package takes the text with references, tries to identify their
+DOIs and metadata at Crossref, and outputs the revised citations in the
+chosen format (BibTeX, a particular journal style…).
 
-Example
--------
+## Example
 
-For example, if we have these references that we want to check (and optionally reformat):
+For example, if we have these references that we want to check (and
+optionally reformat):
 
-*Foster, G. et al. (2017) Future climate forcing potentially without precedent in the last 420 million years.*
+*Foster, G. et al. (2017) Future climate forcing potentially without
+precedent in the last 420 million years.*
 
-*Chen, I.-C. et al. (2011) Science 333, 1024-1026*
+*Chen, I.-C. et al. (2011) Science 333, 1024-1026*
 
 We can copy them to the clipboard or provide them as a character vector:
 
@@ -43,30 +52,34 @@ library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
 newrefs
-
-#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8, 14845."      
-
-#> [2] "Chen, I.-C., Hill, J.K., Ohlemuller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
+#> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8."                    
+#> [2] "Chen, I.-C., Hill, J.K., Ohlemüller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
 ```
 
-Note that missing titles and journals have now been corrected. We can use &gt;9000 different citation styles.
+Note that missing titles and journals have now been corrected. We can
+use \>9000 different citation styles.
 
-The revised references are automatically copied to the clipboard, so they can be directly pasted into the original document.
+The revised references are automatically copied to the clipboard, so
+they can be directly pasted into the original document.
 
-Alternatively, we can obtain the references in BibTeX format, for further editing or importing into a reference manager
+Alternatively, we can obtain the references in BibTeX format, for
+further editing or importing into a reference manager
 
 ``` r
 newrefs <- biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
 ```
 
-Note that some references may be changed and erroneously confounded with others. Please check the output reference list.
+Note that some references may be changed and erroneously confounded with
+others. Please check the output reference list.
 
-Acknowledgements
-----------------
+## Acknowledgements
 
-This package is just a wrapper of the excellent [`rcrossref`](https://github.com/ropensci/rcrossref) package by rOpenSci - big thanks to them!
+This package is just a wrapper of the excellent
+[`rcrossref`](https://github.com/ropensci/rcrossref) package by
+rOpenSci - big thanks to them!
 
-Related
--------
+## Related
 
-See also <https://anystyle.io/> for an excellent free online parser of bibliographic references. Also <http://cermine.ceon.pl/cermine/index.html>, and others...
+See also <https://anystyle.io/> for an excellent free online parser of
+bibliographic references. Also
+<http://cermine.ceon.pl/cermine/index.html>, and others…

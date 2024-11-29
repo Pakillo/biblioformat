@@ -4,28 +4,39 @@
 \alias{biblioformat}
 \title{Revise and Reformat a Bibliography}
 \usage{
-biblioformat(refs = NULL, format = "text", style = "apa",
-  filename = NULL, ...)
+biblioformat(refs = NULL, format = "text", style = "apa", filename = NULL, ...)
 }
 \arguments{
-\item{refs}{A character vector with bibliographic references. If NULL (default), will read them from the clipboard.}
+\item{refs}{A character vector with bibliographic references.
+If NULL (default), will read them from the clipboard.}
 
-\item{format}{Output format. Default is "text". Alternatively, choose "bibtex" for extracting references that can e.g. be later imported in a reference manager. See \code{\link[rcrossref]{cr_cn}} for all output formats available.}
+\item{format}{Output format. Default is "text". Alternatively, choose "bibtex"
+for extracting references that can e.g. be later imported in a reference manager. S
+ee \code{\link[rcrossref]{cr_cn}} for all output formats available.}
 
-\item{style}{Output style for bibliography when \code{format} is "text". Default is "apa", but any of the >9000 styles available in \url{github.com/citation-style-language/styles} can be used. See \code{\link[rcrossref]{cr_cn}} for details.}
+\item{style}{Output style for bibliography when \code{format} is "text".
+Default is "apa", but any of the >9000 styles available in
+\url{github.com/citation-style-language/styles} can be used.
+See \code{\link[rcrossref]{cr_cn}} for details.}
 
-\item{filename}{Optional. Save formatted bibliography to a file.}
+\item{filename}{Optional. Save formatted bibliography to a text file.}
 
 \item{...}{Further arguments for \code{\link[rcrossref]{cr_cn}}.}
 }
 \value{
-A character vector with revised and reformatted bibliographic references. These are automatically copied to the clipboard, so they can be directly pasted onto a document. Optionally, also a text file saved on disk.
+A character vector with revised and reformatted bibliographic references.
+These are automatically copied to the clipboard, so they can be directly pasted
+onto a document. Optionally, also a text file saved on disk.
 }
 \description{
-Revise and reformat a list of references provided as plain text. This function will try to identify their DOI (through Crossref), then formatting each following the chosen output format (e.g. BibTeX, or a particular journal style).
+Revise and reformat a list of references provided as plain text.
+This function will try to identify their DOI (through Crossref),
+then formatting each following the chosen output format
+(e.g. BibTeX, or a particular journal style).
 }
 \note{
-Some references may be changed and erroneously confounded with others. Please check the output reference list.
+Some references may be changed and erroneously confounded with others.
+Please check the output reference list.
 }
 \examples{
 \dontrun{
