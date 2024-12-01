@@ -51,6 +51,8 @@ then
 library(biblioformat)
 
 newrefs <- biblioformat(refs, style = "global-ecology-and-biogeography")
+#> Searching for DOIs...
+#> Retrieving citation metadata...
 newrefs
 #> [1] "Foster, G.L., Royer, D.L. & Lunt, D.J. (2017) Future climate forcing potentially without precedent in the last 420 million years. Nature Communications, 8."                    
 #> [2] "Chen, I.-C., Hill, J.K., Ohlemüller, R., Roy, D.B. & Thomas, C.D. (2011) Rapid Range Shifts of Species Associated with High Levels of Climate Warming. Science, 333, 1024–1026."
@@ -81,5 +83,6 @@ rOpenSci - big thanks to them!
 ## Related
 
 See also <https://anystyle.io/> for an excellent free online parser of
-bibliographic references. Also
-<http://cermine.ceon.pl/cermine/index.html>, and others…
+bibliographic references (or
+[Ranystyle](https://agoutsmedt.github.io/Ranystyle/) to run from R).
+Also <http://cermine.ceon.pl/cermine/index.html>, and others…

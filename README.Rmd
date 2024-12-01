@@ -76,7 +76,7 @@ This package is just a wrapper of the excellent [`rcrossref`](https://github.com
 
 ## Related
 
-See also https://anystyle.io/ for an excellent free online parser of bibliographic references (or [Ranystyle R package](https://agoutsmedt.github.io/Ranystyle/) to run from R). Also http://cermine.ceon.pl/cermine/index.html, and others...
+See also https://anystyle.io/ for an excellent free online parser of bibliographic references (or [Ranystyle](https://agoutsmedt.github.io/Ranystyle/) to run from R). Also http://cermine.ceon.pl/cermine/index.html, and others...
 
 
 
