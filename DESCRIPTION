@@ -1,5 +1,5 @@
 Package: biblioformat
-Version: 0.0.2
+Version: 0.0.3
 Title: Revise and Reformat Plain Text Bibliographies
 Description: Revise and reformat reference lists (bibliographies) in plain text format. 
     From a reference list as plain text, biblioformat attempts to retrieve DOIs 

@@ -4,15 +4,21 @@
 \alias{biblioformat}
 \title{Revise and Reformat a Bibliography}
 \usage{
-biblioformat(refs = NULL, format = "text", style = "apa", filename = NULL, ...)
+biblioformat(
+  refs = NULL,
+  format = c("text", "bibtex", "data.frame"),
+  style = "apa",
+  filename = NULL,
+  ...
+)
 }
 \arguments{
 \item{refs}{A character vector with bibliographic references.
 If NULL (default), will read them from the clipboard.}
 
-\item{format}{Output format. Default is "text". Alternatively, choose "bibtex"
-for extracting references that can e.g. be later imported in a reference manager. S
-ee \code{\link[rcrossref]{cr_cn}} for all output formats available.}
+\item{format}{Output format. Either "text" (default),
+"bibtex" that can e.g. be later imported in a reference manager, or
+"data.frame" to return a data.frame.}
 
 \item{style}{Output style for bibliography when \code{format} is "text".
 Default is "apa", but any of the >9000 styles available in
@@ -24,9 +30,12 @@ See \code{\link[rcrossref]{cr_cn}} for details.}
 \item{...}{Further arguments for \code{\link[rcrossref]{cr_cn}}.}
 }
 \value{
-A character vector with revised and reformatted bibliographic references.
-These are automatically copied to the clipboard, so they can be directly pasted
-onto a document. Optionally, also a text file saved on disk.
+If format = "text" or "bibtex", a character vector with revised and
+reformatted bibliographic references. These are automatically copied to the
+clipboard, so they can be directly pasted onto a document.
+Optionally, if filename is provided, a text file is also saved on disk.
+If format = "data.frame" a data.frame is returned with the input references,
+identified DOI, and resulting citation metatada.
 }
 \description{
 Revise and reformat a list of references provided as plain text.
@@ -41,17 +50,17 @@ Please check the output reference list.
 \examples{
 \dontrun{
 refs <- c(
-"Hansen, J. et al. (2013) Climate sensitivity, sea level and atmospheric carbon dioxide. Phil. Trans. R. Soc. A. 371: 20120294.",
-"Davis, M.B. and Shaw, R.G. (2001) Range shifts and adaptive responses to Quaternary climate change. Science 292(5517): 673-679."
+"Hansen et al. (2013) Climate sensitivity, sea level and atmospheric carbon dioxide",
+"Davis, M.B. and Shaw, R.G. (2001) Science 292(5517): 673-679"
 )
 
-newrefs <- biblioformat(refs)
-newrefs
+biblioformat(refs)
 
-newrefs <- biblioformat(refs, style = "ecology-letters")
-newrefs <- biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
+biblioformat(refs, style = "ecology-letters")
+biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
+
+biblioformat(refs, format = "data.frame")
 
 }
-
 
 }

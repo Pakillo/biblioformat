@@ -7,9 +7,9 @@
 #'
 #' @param refs A character vector with bibliographic references.
 #' If NULL (default), will read them from the clipboard.
-#' @param format Output format. Default is "text". Alternatively, choose "bibtex"
-#' for extracting references that can e.g. be later imported in a reference manager. S
-#' ee \code{\link[rcrossref]{cr_cn}} for all output formats available.
+#' @param format Output format. Either "text" (default),
+#' "bibtex" that can e.g. be later imported in a reference manager, or
+#' "data.frame" to return a data.frame.
 #' @param style Output style for bibliography when \code{format} is "text".
 #' Default is "apa", but any of the >9000 styles available in
 #' \url{github.com/citation-style-language/styles} can be used.
@@ -17,9 +17,12 @@
 #' @param filename Optional. Save formatted bibliography to a text file.
 #' @param ... Further arguments for \code{\link[rcrossref]{cr_cn}}.
 #'
-#' @return A character vector with revised and reformatted bibliographic references.
-#' These are automatically copied to the clipboard, so they can be directly pasted
-#' onto a document. Optionally, also a text file saved on disk.
+#' @return If format = "text" or "bibtex", a character vector with revised and
+#' reformatted bibliographic references. These are automatically copied to the
+#' clipboard, so they can be directly pasted onto a document.
+#' Optionally, if filename is provided, a text file is also saved on disk.
+#' If format = "data.frame" a data.frame is returned with the input references,
+#' identified DOI, and resulting citation metatada.
 #' @export
 #'
 #' @note Some references may be changed and erroneously confounded with others.
@@ -28,43 +31,87 @@
 #' @examples
 #' \dontrun{
 #' refs <- c(
-#' "Hansen, J. et al. (2013) Climate sensitivity, sea level and atmospheric carbon dioxide. Phil. Trans. R. Soc. A. 371: 20120294.",
-#' "Davis, M.B. and Shaw, R.G. (2001) Range shifts and adaptive responses to Quaternary climate change. Science 292(5517): 673-679."
+#' "Hansen et al. (2013) Climate sensitivity, sea level and atmospheric carbon dioxide",
+#' "Davis, M.B. and Shaw, R.G. (2001) Science 292(5517): 673-679"
 #' )
 #'
-#' newrefs <- biblioformat(refs)
-#' newrefs
+#' biblioformat(refs)
 #'
-#' newrefs <- biblioformat(refs, style = "ecology-letters")
-#' newrefs <- biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
+#' biblioformat(refs, style = "ecology-letters")
+#' biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
+#'
+#' biblioformat(refs, format = "data.frame")
 #'
 #' }
 #'
-#'
-biblioformat <- function(refs = NULL, format = "text", style = "apa", filename = NULL, ...) {
+
+biblioformat <- function(refs = NULL,
+                         format = c("text", "bibtex", "data.frame"),
+                         style = "apa",
+                         filename = NULL,
+                         ...) {
+
+  format <- match.arg(format)
+  format.out <- format
+  if (format == "data.frame") {
+    format.out <- "text"
+  }
 
   if (is.null(refs)) {
     refs.in <- clipr::read_clip()
-  } else refs.in <- refs
-
+  } else {
+    refs.in <- refs
+  }
   stopifnot(is.character(refs.in))
+
 
   # Retrieve DOIs from Crossref
   message("Searching for DOIs...")
-  refs.dois <- unlist(lapply(refs.in, function(x) {
+  refs.dois <- suppressWarnings(lapply(refs.in, function(x) {
     rcrossref::cr_works(query = x, limit = 1, sort = "score", select = "DOI")$data$doi
   }))
-
+  ## change NULL to NA
+  refs.dois <- unlist(lapply(refs.dois, function(x) {
+    if (is.null(x)) {
+      x <- NA_character_
+    } else {
+      x <- x
+    }
+  }))
   stopifnot(is.character(refs.dois))
+
+
 
   # Retrieve citations for each DOI from Crossref
   message("Retrieving citation metadata...")
-  refs.cit <- unlist(rcrossref::cr_cn(refs.dois, format = format, style = style, ...))
 
-  if (!is.null(filename)) writeLines(refs.cit, filename)
+  refs.cit <- unlist(lapply(refs.dois, function(x) {
+      if (is.na(x)) {
+        cit <- NA_character_
+      } else {
+        cit <- rcrossref::cr_cn(x, format = format.out, style = style, ...)
+      }
+  }))
 
-  clipr::write_clip(refs.cit, object_type = "character", allow_non_interactive = TRUE)
 
-  invisible(refs.cit)
+
+  ## Save to disk or clipboard
+  if (format == "text" | format == "bibtex") {
+    if (!is.null(filename)) {
+      writeLines(refs.cit, filename)
+    }
+    clipr::write_clip(refs.cit, object_type = "character", allow_non_interactive = TRUE)
+  }
+
+
+  if (format == "data.frame") {
+    out <- data.frame(ref.in = refs.in, DOI = refs.dois, ref.out = refs.cit)
+  }
+
+  if (format == "text" | format == "bibtex") {
+    out <- refs.cit
+  }
+
+  out
 
 }
