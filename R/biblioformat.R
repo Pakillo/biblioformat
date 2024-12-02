@@ -7,9 +7,10 @@
 #'
 #' @param refs A character vector with bibliographic references.
 #' If NULL (default), will read them from the clipboard.
-#' @param format Output format. Either "text" (default),
-#' "bibtex" that can e.g. be later imported in a reference manager, or
-#' "data.frame" to return a data.frame.
+#' @param output Return references as plain text (output = "text") or as
+#' a data.frame (output = "data.frame")
+#' @param format Reference format. Either "text" (default) or
+#' "bibtex" that can e.g. be later imported in a reference manager
 #' @param style Output style for bibliography when \code{format} is "text".
 #' Default is "apa", but any of the >9000 styles available in
 #' \url{github.com/citation-style-language/styles} can be used.
@@ -17,11 +18,11 @@
 #' @param filename Optional. Save formatted bibliography to a text file.
 #' @param ... Further arguments for \code{\link[rcrossref]{cr_cn}}.
 #'
-#' @return If format = "text" or "bibtex", a character vector with revised and
+#' @return If output = "text", a character vector with revised and
 #' reformatted bibliographic references. These are automatically copied to the
 #' clipboard, so they can be directly pasted onto a document.
 #' Optionally, if filename is provided, a text file is also saved on disk.
-#' If format = "data.frame" a data.frame is returned with the input references,
+#' If output = "data.frame" a data.frame is returned with the input references,
 #' identified DOI, and resulting citation metatada.
 #' @export
 #'
@@ -36,26 +37,22 @@
 #' )
 #'
 #' biblioformat(refs)
+#' biblioformat(refs, output = "data.frame")
 #'
 #' biblioformat(refs, style = "ecology-letters")
 #' biblioformat(refs, format = "bibtex", filename = "myrefs.bib")
-#'
-#' biblioformat(refs, format = "data.frame")
-#'
 #' }
 #'
 
 biblioformat <- function(refs = NULL,
-                         format = c("text", "bibtex", "data.frame"),
+                         output = c("text", "data.frame"),
+                         format = c("text", "bibtex"),
                          style = "apa",
                          filename = NULL,
                          ...) {
 
+  output <- match.arg(output)
   format <- match.arg(format)
-  format.out <- format
-  if (format == "data.frame") {
-    format.out <- "text"
-  }
 
   if (is.null(refs)) {
     refs.in <- clipr::read_clip()
@@ -89,26 +86,24 @@ biblioformat <- function(refs = NULL,
       if (is.na(x)) {
         cit <- NA_character_
       } else {
-        cit <- rcrossref::cr_cn(x, format = format.out, style = style, ...)
+        cit <- rcrossref::cr_cn(x, format = format, style = style, ...)
       }
   }))
 
 
 
   ## Save to disk or clipboard
-  if (format == "text" | format == "bibtex") {
-    if (!is.null(filename)) {
+  if (!is.null(filename)) {
       writeLines(refs.cit, filename)
-    }
-    clipr::write_clip(refs.cit, object_type = "character", allow_non_interactive = TRUE)
   }
+  clipr::write_clip(refs.cit, object_type = "character", allow_non_interactive = TRUE)
 
 
-  if (format == "data.frame") {
+  if (output == "data.frame") {
     out <- data.frame(ref.in = refs.in, DOI = refs.dois, ref.out = refs.cit)
   }
 
-  if (format == "text" | format == "bibtex") {
+  if (output == "text") {
     out <- refs.cit
   }
 

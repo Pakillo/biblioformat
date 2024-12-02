@@ -6,7 +6,8 @@
 \usage{
 biblioformat(
   refs = NULL,
-  format = c("text", "bibtex", "data.frame"),
+  output = c("text", "data.frame"),
+  format = c("text", "bibtex"),
   style = "apa",
   filename = NULL,
   ...
@@ -16,9 +17,11 @@ biblioformat(
 \item{refs}{A character vector with bibliographic references.
 If NULL (default), will read them from the clipboard.}
 
-\item{format}{Output format. Either "text" (default),
-"bibtex" that can e.g. be later imported in a reference manager, or
-"data.frame" to return a data.frame.}
+\item{output}{Return references as plain text (output = "text") or as
+a data.frame (output = "data.frame")}
+
+\item{format}{Reference format. Either "text" (default) or
+"bibtex" that can e.g. be later imported in a reference manager}
 
 \item{style}{Output style for bibliography when \code{format} is "text".
 Default is "apa", but any of the >9000 styles available in
@@ -30,11 +33,11 @@ See \code{\link[rcrossref]{cr_cn}} for details.}
 \item{...}{Further arguments for \code{\link[rcrossref]{cr_cn}}.}
 }
 \value{
-If format = "text" or "bibtex", a character vector with revised and
+If output = "text", a character vector with revised and
 reformatted bibliographic references. These are automatically copied to the
 clipboard, so they can be directly pasted onto a document.
 Optionally, if filename is provided, a text file is also saved on disk.
-If format = "data.frame" a data.frame is returned with the input references,
+If output = "data.frame" a data.frame is returned with the input references,
 identified DOI, and resulting citation metatada.
 }
 \description{
